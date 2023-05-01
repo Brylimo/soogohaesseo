@@ -25,7 +25,16 @@ const Footer = styled.footer`
 
 const LoginButton = styled.button`
     text-align: center;
-
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background-color: var(--background-color1);
+    height: 2rem;
+    color: white;
+    width: 65px;
+    cursor: pointer;
 `;
 
 const Logo = styled.img.attrs({
@@ -39,6 +48,7 @@ const Logo = styled.img.attrs({
 const HeaderLeft = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 140px;
 `
 
