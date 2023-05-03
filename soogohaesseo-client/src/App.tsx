@@ -58,13 +58,16 @@ body {
 	font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 1.2;
+  background-color: ${ (props) => props.theme.bgColor };
+  color: ${ (props) => props.theme.textColor };
 }
 a {
 	text-decoration: none;
 	color: inherit;
 }
 :root {
-  --background-color1: #212529;
+  --main-color: #b95de2;
+  --btn-color1: #212529;
 }
 `
 

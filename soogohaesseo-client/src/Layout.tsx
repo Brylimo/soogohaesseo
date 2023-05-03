@@ -30,7 +30,7 @@ const LoginButton = styled.button`
     outline: none;
     font-weight: bold;
     word-break: keep-all;
-    background-color: var(--background-color1);
+    background-color: var(--btn-color1);
     height: 2rem;
     color: white;
     width: 65px;

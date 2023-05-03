@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./routes/Home";
+import Calendar from "./routes/Calendar";
 import Layout from "./Layout";
 
 function Router() {
@@ -7,7 +7,7 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route element={<Layout />}>
-                    <Route path="/" element={<Home/>} />
+                    <Route path="/" element={<Calendar/>} />
                 </Route>
             </Routes>
         </BrowserRouter>
