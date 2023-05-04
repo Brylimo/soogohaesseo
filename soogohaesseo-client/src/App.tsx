@@ -68,6 +68,7 @@ a {
 :root {
   --main-color: #b95de2;
   --btn-color1: #212529;
+  --txt-color1: #dddcdb;
 }
 `
 

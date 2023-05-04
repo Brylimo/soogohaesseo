@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import CalendarHeader from "../components/CalendarHeader";
-import CalendarDays from "../components/CalendarDays";
 import CalendarBody from "../components/CalendarBody";
 
 const Frame = styled.div`
@@ -25,8 +24,7 @@ const Calendar = () => {
         <Frame>
             <CalendarFrame>
                 <CalendarHeader currentMonth={currentMonth} />
-                <CalendarDays />
-                <CalendarBody />
+                <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} />
             </CalendarFrame>
         </Frame>
     );
