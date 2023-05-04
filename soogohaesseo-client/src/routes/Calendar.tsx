@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import CalendarHeader from "../components/CalendarHeader";
-import Days from "../components/Days";
+import CalendarDays from "../components/CalendarDays";
+import CalendarBody from "../components/CalendarBody";
 
 const Frame = styled.div`
     width: 100%;
@@ -24,8 +25,8 @@ const Calendar = () => {
         <Frame>
             <CalendarFrame>
                 <CalendarHeader currentMonth={currentMonth} />
-                <Days />
-                <div>Cells</div>
+                <CalendarDays />
+                <CalendarBody />
             </CalendarFrame>
         </Frame>
     );
