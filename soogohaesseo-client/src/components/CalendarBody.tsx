@@ -1,4 +1,4 @@
-import { addDays, endOfMonth, endOfWeek, format, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
+import { addDays, endOfMonth, endOfWeek, format, isSameMonth, isSameDay, startOfMonth, startOfWeek } from "date-fns";
 import styled from "styled-components";
 
 const CalendarBodyFrame = styled.div`
@@ -15,11 +15,14 @@ const Day = styled.div`
     background-color: rgba(204, 204, 255, 0.5);
 `;
 
-const Cell = styled.div`
+const Cell = styled.div<{color: string, bgColor: string}>`
     width: 100%;
     position: relative;
     padding: 0.3rem;
+    font-size: 16px;
+    border-radius: 6px;
     color: ${(props) => props.color};
+    background-color: ${(props) => props.bgColor};
 
     &:after {
         content: "";
@@ -41,12 +44,13 @@ interface CalendarBodyProps {
 
 interface CellBoxProps {
     dayx: string,
-    color?: string
+    color?: string,
+    bgColor?: string
 }
 
-const CellBox = ({dayx, color = "#21252a" }:CellBoxProps) => {
+const CellBox = ({dayx, color = "#21252a", bgColor = "transparent" }:CellBoxProps) => {
     return (
-        <Cell color={color}>
+        <Cell color={color} bgColor={bgColor}>
             <CellInner>
                 {dayx}
             </CellInner>
@@ -76,7 +80,7 @@ const CalendarBody = ({ currentMonth, selectedDate }: CalendarBodyProps) => {
             })}
             {days.map((dayx, index) => {
                 return (
-                    isSameMonth(dayx, monthStart) ? <CellBox key={index} dayx={format(dayx, 'd')} /> : <CellBox key={index} dayx={format(dayx, 'd')} color={"#dddcdb"} />       
+                    isSameMonth(dayx, monthStart) ? isSameDay(dayx, selectedDate) ? <CellBox key={index} dayx={format(dayx, 'd')} bgColor={"rgba(255, 225, 255, 0.7)"} /> : <CellBox key={index} dayx={format(dayx, 'd')} /> : <CellBox key={index} dayx={format(dayx, 'd')} color={"#dddcdb"} />       
                 );
             })}
         </CalendarBodyFrame>
