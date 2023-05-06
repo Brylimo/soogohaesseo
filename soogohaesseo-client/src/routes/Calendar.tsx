@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import CalendarHeader from "../components/CalendarHeader";
 import CalendarBody from "../components/CalendarBody";
@@ -21,18 +21,18 @@ const Calendar = () => {
     const [ currentMonth, setCurrentMonth ] = useState(new Date());
     const [ selectedDate, setSelectedDate ] = useState(new Date());
 
-    const prevMonth = () => {
+    const prevMonth = useCallback(() => {
         setCurrentMonth(subMonths(currentMonth, 1));
-    };
-    const nextMonth = () => {
+    }, [currentMonth]);
+    const nextMonth = useCallback(() => {
         setCurrentMonth(addMonths(currentMonth, 1));
-    }
+    }, [currentMonth]);
 
     return (
         <Frame>
             <CalendarFrame>
                 <CalendarHeader currentMonth={currentMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
-                <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} />
+                <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
             </CalendarFrame>
         </Frame>
     );
