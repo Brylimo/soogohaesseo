@@ -29,6 +29,10 @@ const Cell = styled.div<{color: string, bgColor: string}>`
         display: block;
         padding-bottom: 100%;
     }
+
+    &:hover {
+        background-color: rgba(255, 210, 255, 0.9);
+    }
 `;
 
 const CellInner = styled.div`

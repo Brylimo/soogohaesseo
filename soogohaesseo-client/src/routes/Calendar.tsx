@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import CalendarHeader from "../components/CalendarHeader";
 import CalendarBody from "../components/CalendarBody";
+import { addMonths, subMonths } from "date-fns";
 
 const Frame = styled.div`
     width: 100%;
@@ -20,10 +21,17 @@ const Calendar = () => {
     const [ currentMonth, setCurrentMonth ] = useState(new Date());
     const [ selectedDate, setSelectedDate ] = useState(new Date());
 
+    const prevMonth = () => {
+        setCurrentMonth(subMonths(currentMonth, 1));
+    };
+    const nextMonth = () => {
+        setCurrentMonth(addMonths(currentMonth, 1));
+    }
+
     return (
         <Frame>
             <CalendarFrame>
-                <CalendarHeader currentMonth={currentMonth} />
+                <CalendarHeader currentMonth={currentMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
                 <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} />
             </CalendarFrame>
         </Frame>

@@ -1,3 +1,6 @@
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isSameMonth } from "date-fns";
 import styled from "styled-components";
 
 const HeaderFrame = styled.div`
@@ -11,7 +14,11 @@ const LeftSideSpan = styled.span`
     color: var(--main-color);
     font-weight: bold;
     font-size: 25px;
-    &:first-child {
+    margin-left: 7px;
+    &:last-child {
+        margin-right: 7px;
+    }
+    &:only-child {
         margin-right: 7px;
     }
 `;
@@ -22,20 +29,49 @@ const YearSpan = styled.span`
     font-size: 20px;
 `;
 
+const LeftWrapper = styled.div`
+    display: flex;
+`;
+
+const FontWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const IconSpan = styled.span`
+    cursor: pointer;
+`;
+
 interface CalendarHeaderProps {
-    currentMonth: Date
+    currentMonth: Date,
+    prevMonth(): void,
+    nextMonth(): void
 }
 
-const CalendarHeader = ({ currentMonth }: CalendarHeaderProps) => {
+const CalendarHeader = ({ currentMonth, prevMonth, nextMonth }: CalendarHeaderProps) => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
     
+    const today = new Date();
+
     return (
         <HeaderFrame>
-           <div>
-                <LeftSideSpan>{monthNames[currentMonth.getMonth()]}</LeftSideSpan>
-                <LeftSideSpan>{currentMonth.getDate()}</LeftSideSpan>
-            </div> 
+           <LeftWrapper>
+                <FontWrapper>
+                    <IconSpan onClick={prevMonth}>
+                        <FontAwesomeIcon icon={faCaretLeft} size="lg" style={{color:"#b95de2"}} />
+                    </IconSpan>
+                </FontWrapper>
+                <div>
+                    <LeftSideSpan>{monthNames[currentMonth.getMonth()]}</LeftSideSpan>
+                    {isSameMonth(currentMonth, today) ? <LeftSideSpan>{ currentMonth.getDate()}</LeftSideSpan> : null}
+                </div>
+                <FontWrapper>
+                    <IconSpan onClick={nextMonth}>
+                        <FontAwesomeIcon icon={faCaretRight} size="lg" style={{color:"#b95de2"}} />
+                    </IconSpan>
+                </FontWrapper>
+            </LeftWrapper> 
             <div>
                 <YearSpan>{currentMonth.getFullYear()}</YearSpan>
             </div>
