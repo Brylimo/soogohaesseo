@@ -3,12 +3,14 @@ import styled from "styled-components";
 import CalendarHeader from "../components/CalendarHeader";
 import CalendarBody from "../components/CalendarBody";
 import { addMonths, subMonths } from "date-fns";
+import Todo from "../components/Todo";
 
 const Frame = styled.div`
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 3rem;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
 `;
 
 const CalendarFrame = styled.div`
@@ -34,6 +36,8 @@ const Calendar = () => {
                 <CalendarHeader currentMonth={currentMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
                 <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
             </CalendarFrame>
+
+            <Todo />
         </Frame>
     );
 }
