@@ -1,6 +1,5 @@
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { isSameMonth } from "date-fns";
 import styled from "styled-components";
 
 const HeaderFrame = styled.div`
@@ -10,17 +9,12 @@ const HeaderFrame = styled.div`
     margin-bottom: 15px;
 `;
 
-const LeftSideSpan = styled.span`
-    color: var(--main-color);
+const LeftSideSpan = styled.span<{ color?: string }>`
+    color: ${(props) => props.color || '#b95de2'};
     font-weight: bold;
     font-size: 25px;
     margin-left: 7px;
-    &:last-child {
-        margin-right: 7px;
-    }
-    &:only-child {
-        margin-right: 7px;
-    }
+    margin-right: 7px;
 `;
 
 const YearSpan = styled.span`
@@ -64,7 +58,6 @@ const CalendarHeader = ({ currentMonth, prevMonth, nextMonth }: CalendarHeaderPr
                 </FontWrapper>
                 <div>
                     <LeftSideSpan>{monthNames[currentMonth.getMonth()]}</LeftSideSpan>
-                    {isSameMonth(currentMonth, today) ? <LeftSideSpan>{ currentMonth.getDate()}</LeftSideSpan> : null}
                 </div>
                 <FontWrapper>
                     <IconSpan onClick={nextMonth}>

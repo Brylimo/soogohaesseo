@@ -21,6 +21,7 @@ const Footer = styled.footer`
     padding: 1rem 2rem;
     z-index: 10;
     box-shadow: rgba(0, 0, 0, 0.08) 0px -8px 8px;
+    margin-top: 48px;
 `;
 
 const LoginButton = styled.button`
