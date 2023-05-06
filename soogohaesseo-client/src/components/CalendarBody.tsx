@@ -1,5 +1,5 @@
 import { addDays, endOfMonth, endOfWeek, format, isSameMonth, isSameDay, startOfMonth, startOfWeek } from "date-fns";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const CalendarBodyFrame = styled.div`
     width: 100%;
@@ -15,14 +15,14 @@ const Day = styled.div`
     background-color: rgba(204, 204, 255, 0.5);
 `;
 
-const Cell = styled.div<{color: string, bgColor: string}>`
+const Cell = styled.div<{color?: string, bgColor?: string, flag?: boolean}>`
     width: 100%;
     position: relative;
     padding: 0.3rem;
     font-size: 16px;
     border-radius: 6px;
-    color: ${(props) => props.color};
-    background-color: ${(props) => props.bgColor};
+    color: ${(props) => props.color || '#21252a'};
+    background-color: ${(props) => props.bgColor || 'transparent'};
 
     &:after {
         content: "";
@@ -33,6 +33,10 @@ const Cell = styled.div<{color: string, bgColor: string}>`
     &:hover {
         background-color: rgba(255, 210, 255, 0.9);
     }
+
+    ${props => props.flag && css`
+        pointer-events: none;
+    `};
 `;
 
 const CellInner = styled.div`
@@ -49,12 +53,13 @@ interface CalendarBodyProps {
 interface CellBoxProps {
     dayx: string,
     color?: string,
-    bgColor?: string
+    bgColor?: string,
+    flag?: boolean
 }
 
-const CellBox = ({dayx, color = "#21252a", bgColor = "transparent" }:CellBoxProps) => {
+const CellBox = ({dayx, color, bgColor, flag }:CellBoxProps) => {
     return (
-        <Cell color={color} bgColor={bgColor}>
+        <Cell color={color} bgColor={bgColor} flag={flag}>
             <CellInner>
                 {dayx}
             </CellInner>
@@ -84,7 +89,7 @@ const CalendarBody = ({ currentMonth, selectedDate }: CalendarBodyProps) => {
             })}
             {days.map((dayx, index) => {
                 return (
-                    isSameMonth(dayx, monthStart) ? isSameDay(dayx, selectedDate) ? <CellBox key={index} dayx={format(dayx, 'd')} bgColor={"rgba(255, 225, 255, 0.7)"} /> : <CellBox key={index} dayx={format(dayx, 'd')} /> : <CellBox key={index} dayx={format(dayx, 'd')} color={"#dddcdb"} />       
+                    isSameMonth(dayx, monthStart) ? isSameDay(dayx, selectedDate) ? <CellBox key={index} dayx={format(dayx, 'd')} bgColor={"rgba(255, 225, 255, 0.7)"} /> : <CellBox key={index} dayx={format(dayx, 'd')} /> : <CellBox key={index} dayx={format(dayx, 'd')} color={"#dddcdb"} flag={true} />       
                 );
             })}
         </CalendarBodyFrame>
