@@ -22,6 +22,10 @@ const TodoDay = styled.div`
     height: 150px;
 `;
 
+const TodoNum = styled.div`
+
+`;
+
 interface TodoProps {
     selectedDate: Date,
 }
@@ -39,9 +43,9 @@ const Todo = ({ selectedDate }:TodoProps) => {
                     <span>{selectedDate.getFullYear()}년 {selectedDate.getMonth()+1}월 {selectedDate.getDate()}일</span>
                     <span>{week[selectedDate.getDay()]}</span>
                 </TodoDay>
-                <div>
+                <TodoNum>
                     할 일 0개 남음
-                </div>
+                </TodoNum>
             </TodoHeader>
         </TodoFrame>
     );
