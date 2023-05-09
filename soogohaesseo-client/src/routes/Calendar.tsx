@@ -37,7 +37,7 @@ const Calendar = () => {
                 <CalendarBody currentMonth={currentMonth} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
             </CalendarFrame>
 
-            <Todo />
+            <Todo selectedDate={selectedDate} />
         </Frame>
     );
 }
