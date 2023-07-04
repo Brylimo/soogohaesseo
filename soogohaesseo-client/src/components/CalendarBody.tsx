@@ -14,6 +14,7 @@ const Day = styled.div`
     border-radius: 6px;
     padding: 1px 6px;
     background-color: rgba(204, 204, 255, 0.5);
+    text-align: center;
 `;
 
 const Cell = styled.div<{color?: string, bgColor?: string, flag?: boolean, border?: boolean}>`
