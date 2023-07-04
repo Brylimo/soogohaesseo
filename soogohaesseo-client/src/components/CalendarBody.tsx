@@ -5,7 +5,7 @@ import styled, {css} from "styled-components";
 const CalendarBodyFrame = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(7, 14.28571%);
+    grid-template-columns: repeat(7, 14.28571%);  
 `;
 
 const Day = styled.div`

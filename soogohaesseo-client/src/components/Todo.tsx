@@ -19,11 +19,23 @@ const TodoHeader = styled.div`
 const TodoDay = styled.div`
     display: flex;
     flex-direction: column;
-    height: 150px;
+`;
+const TodoNum = styled.div`
+    font-size: 18px;
+`;
+const TodaySpan = styled.span`
+    font-weight: bold;
+    font-size: 3.2rem;
 `;
 
-const TodoNum = styled.div`
+const DaySpan = styled.span`
+    font-size: 18px;
+`;
 
+const TodoBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
 `;
 
 interface TodoProps {
@@ -40,9 +52,14 @@ const Todo = ({ selectedDate }:TodoProps) => {
         <TodoFrame>
             <TodoHeader>
                 <TodoDay>
-                    <span>{selectedDate.getFullYear()}년 {selectedDate.getMonth()+1}월 {selectedDate.getDate()}일</span>
-                    <span>{week[selectedDate.getDay()]}</span>
+                    <TodaySpan>{selectedDate.getFullYear()}년 {selectedDate.getMonth()+1}월 {selectedDate.getDate()}일</TodaySpan>
+                    <DaySpan>{week[selectedDate.getDay()]}</DaySpan>
                 </TodoDay>
+                <TodoBody>
+                    <div>
+                        <input type="checkbox" /><span>hello my friend</span>
+                    </div>
+                </TodoBody>
                 <TodoNum>
                     할 일 0개 남음
                 </TodoNum>
