@@ -46,7 +46,7 @@ const CalendarHeader = ({ currentMonth, prevMonth, nextMonth }: CalendarHeaderPr
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
     
-    const today = new Date();
+    // const today = new Date();
 
     return (
         <HeaderFrame>
