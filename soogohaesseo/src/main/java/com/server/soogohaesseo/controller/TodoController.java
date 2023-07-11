@@ -12,6 +12,6 @@ public class TodoController {
     @GetMapping("/")
     public String todo() {
         log.debug("todo controller starts!");
-        return "Hello my pal!";
+        return "hoho!";
     }
 }
