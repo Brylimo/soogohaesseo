@@ -1,4 +1,4 @@
-package com.server.soogohaesseo.api.controller;
+package com.server.soogohaesseo.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
