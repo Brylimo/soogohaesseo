@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value="/api/todo")
 public class TodoController {
     @GetMapping("/")
-    public String todo() {
-        log.debug("todo controller starts!");
+    public String getTodo() {
+        log.debug("getTodo controller starts!");
+
         return "hoho!";
     }
 }
